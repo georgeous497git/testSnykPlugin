@@ -15,13 +15,19 @@ jobs:
 
       - uses: actions/setup-java@v4.5.0
         with:
-          java-version: '17'
-          distribution: 'zulu'
+          java-version: '21'
+          distribution: 'temurin'
           cache: 'gradle'
 
       - name: Add permissions
         run: |
           chmod +x gradlew
+
+      - name: Test dependencies
+        run: ./gradlew dependencies
+
+      - name: Run gradle
+        run: ./gradlew build --debug
 
       - name: Install Snyk CLI
         run: npm install -g snyk
