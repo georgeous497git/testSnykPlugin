@@ -17,7 +17,11 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-          cache: gradle
+          cache: 'gradle'
+
+      - name: Add permissions
+        run: |
+          chmod +x gradlew
 
       - name: Install Snyk CLI
         run: npm install -g snyk
