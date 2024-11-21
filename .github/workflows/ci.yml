@@ -22,17 +22,14 @@ jobs:
       - name: Add permissions
         run: |
           chmod +x gradlew
+          ./gradlew build
 
-      - name: Test dependencies
-        run: ./gradlew dependencies
-
-      - name: Run gradle
-        run: ./gradlew build --debug
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
       - name: Install Snyk CLI
         run: npm install -g snyk
-
-      - name: Run snyk
-        uses: snyk/actions/gradle@master
-        with:
-          args: --all-projects --debug
+      - name: Run Snyk
+        run: snyk test
