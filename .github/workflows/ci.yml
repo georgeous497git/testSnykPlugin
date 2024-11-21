@@ -15,8 +15,8 @@ jobs:
 
       - uses: actions/setup-java@v4.5.0
         with:
-          java-version: '21'
-          distribution: 'temurin'
+          java-version: '17'
+          distribution: 'zulu'
           cache: 'gradle'
 
       - name: Add permissions
